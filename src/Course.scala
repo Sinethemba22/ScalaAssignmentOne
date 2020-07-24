@@ -3,11 +3,20 @@ object Course {
 
         case class Course (courseName: String, coursePrice: Double, body: String)
 
-        val course1 = Course (implicit  "ICE362S Elective, FT,", "Course Price : R "+ 40.000.hashCode())
-        val course2 = Course (implicit  courseName = "ICE262S Elective, FT", coursePrice = "Course Price :R" +35.000.hashCode())
-        val course3 = Course (implicit courseName = "- ICF152S Elective, FT", coursePrice = "Course Price: R"+ 30.000.hashCode() )
+        class Courses(c: Course) {
+            def courseID: String = Course"- = ${type.courseType} - ${type.courseType.hashCode}"
+        }
 
-        println(course1,course2,course3)
+        object CourseExtensions {
+            implicit def courseID (c: Course): Courses = new Courses (c)
+        }
+
+        import CourseExtensions._
+        val ICE362S_Elective = Course("FT", 40000.00)
+        val ICE262S_Elective = Course("FT", 35000.00)
+        val ICF152S_Elective = Course("FT", 30000.00)
+
+
 
     }
 
